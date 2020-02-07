@@ -1,0 +1,3 @@
+#!/usr/bin/Rscript
+write.table(t(sapply(jsonlite::fromJSON(readLines(f<-pipe("aws ec2 describe-instances")))$Reservations$Instances, function(o) list(id=o$InstanceId,key=o$KeyName,ip=o$NetworkInterfaces[[1]]$Association$PublicIp, pip=o$PrivateIpAddress, name=tryCatch(o$Tags[[1]]$Value[o$Tags[[1]]$Key=="Name"],error=function(e) "")))),sep='\t',quote=F,row.names=F,col.names=F)
+close(f)
