@@ -1,0 +1,8 @@
+{
+    "ImageId": "ami-05ee13292007849ac",
+    "KeyName": "urbanek",
+    "SecurityGroupIds": [ "sg-c8fb76a5", "sg-0506f6f3028a2be5b", "sg-01c3c8d97713f6731" ],
+    "InstanceType": "c4.large",
+    "UserData": "IyEvYmluL2Jhc2gKCiMgTm90ZTogdGhpcyBpcyBydW4gYXMgcm9vdCwgc28gbm8gc3VkbwoKbW91bnQgLXQgbmZzNCAtbyBuZnN2ZXJzPTQuMSxyc2l6ZT0xMDQ4NTc2LHdzaXplPTEwNDg1NzYsaGFyZCx0aW1lbz02MDAsbm9hdGltZSxyZXRyYW5zPTIsbm9yZXN2cG9ydCBmcy05OWNkOWNlMC5lZnMudXMtZWFzdC0yLmFtYXpvbmF3cy5jb206LyAvZGF0YS9yY2xvdWQvZGF0YS8KCmNkIC9kYXRhL3JjbG91ZApzaCBkYXRhL3NjcmlwdHMvcnVuLnNoCg==",
+    "Placement": { "AvailabilityZone": "us-east-2a" }
+}
