@@ -1,3 +1,5 @@
+#!/bin/bash
+
 if [ "x$1" = x-h ]; then
     echo ''
     echo " Usage: $0 [<specs.json> [<volume-id>]]"
@@ -39,6 +41,16 @@ echo -n " - Accepted ($sid), waiting ."
 while true; do
     iid=`aws ec2 describe-spot-instance-requests --spot-instance-request-ids $sid| tee -a spot-request.log | sed -n 's/.*"InstanceId": "//p' | sed 's:".*::'`
     if [ -n "$iid" ]; then break; fi
+    ## let's also check for low price
+    if aws ec2 describe-spot-instance-requests --spot-instance-request-ids $sid| grep price; then
+	echo ''
+	echo " Price too low (see above), re-run with MAXPRICE=... $0 $*"
+	echo ''
+        echo " - Cancelling $sid"
+	aws ec2 cancel-spot-instance-requests --spot-instance-request-ids $sid >> spot-request.log
+	echo ''
+	exit 1
+    fi
     echo -n .
     sleep 3
 done
