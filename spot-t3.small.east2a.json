@@ -1,0 +1,7 @@
+{
+    "ImageId": "ami-0082745652f7bea1c",
+    "KeyName": "urbanek",
+    "SecurityGroupIds": [ "sg-c8fb76a5", "sg-02424dd3bf8cbf121", "sg-0bf811ecd3e664489", "sg-071f223e8371b39a8" ],
+    "Placement": { "AvailabilityZone": "us-east-2a" },
+    "InstanceType": "t3.small"
+}
