@@ -1,0 +1,23 @@
+## IMPORTANT: change DNS first!
+
+## needs us-east-2a to access volumes
+MAXPRICE=0.012 sh spot-request.sh spot-t3.small.east2a.json vol-06e4a247af2334522
+
+aws ec2 attach-volume --instance-id i-0b4edf78c2dbcee8c --volume-id vol-03b78a1cbe77f9408 --device xvdc
+
+sudo mkdir /www
+sudo mount -o noatime /dev/nvme2n1 /www
+
+sudo apt-get update -y
+sudo apt-get install -y redis-server emacs25-nox nginx certbot
+
+## add to /etc/systemd/system/redis.service
+ReadWriteDirectories=-/mnt/rcs
+
+systemctl daemon-reload
+ln -sfn /mnt/etc/redis.conf /etc/redis/redis.conf
+
+/etc/init.d/nginx stop
+ln -sfn /mnt/etc/nginx-site.conf /etc/nginx/sites-available/default 
+/etc/init.d/nginx start
+
