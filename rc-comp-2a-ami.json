@@ -1,5 +1,5 @@
 {
-    "ImageId": "ami-04f741b79c42f1fb9",
+    "ImageId": "ami-088f269feaa701c29",
     "KeyName": "urbanek",
     "SecurityGroupIds": [ "sg-c8fb76a5", "sg-0506f6f3028a2be5b", "sg-01c3c8d97713f6731" ],
     "InstanceType": "c5.large",
